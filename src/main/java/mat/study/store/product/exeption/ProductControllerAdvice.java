@@ -1,5 +1,6 @@
 package mat.study.store.product.exeption;
 
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import mat.study.store.product.model.response.Error;
 import mat.study.store.product.model.response.ErrorDetail;
@@ -18,6 +19,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
@@ -85,15 +88,23 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   }
 
   @ExceptionHandler(ConstraintViolationException.class)
-  public ResponseEntity<Error> handleConstraintViolation(ConstraintViolationException ex) {
+  public ResponseEntity<ErrorDetail> handleConstraintViolation(ConstraintViolationException ex) {
 
-    Error body = Error.builder()
+    ErrorDetail body = ErrorDetail.builder()
         .code("PR-05")
-        .message(ex.getConstraintViolations().toString())//TODO
-        .status(HttpStatus.BAD_REQUEST)
+        .message("It was not possible to process this request")
+        .status(HttpStatus.UNPROCESSABLE_ENTITY)
+        .detail(buildValidationErrors(ex.getConstraintViolations()))
         .time(LocalDateTime.now())
         .build();
-    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
+  }
+
+  private static String buildValidationErrors(
+      Set<ConstraintViolation<?>> violations) {
+    return violations.stream()
+        .map(ConstraintViolation::getMessage)
+        .collect(Collectors.joining("; "));
   }
 
 }
