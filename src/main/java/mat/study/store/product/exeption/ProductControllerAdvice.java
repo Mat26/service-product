@@ -2,6 +2,7 @@ package mat.study.store.product.exeption;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import mat.study.store.product.model.enums.InfoError;
 import mat.study.store.product.model.response.Error;
 import mat.study.store.product.model.response.ErrorDetail;
 import org.springframework.http.HttpHeaders;
@@ -29,7 +30,7 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   public ResponseEntity<Error> handleNoProductException(
       Exception ex) {
     Error body = Error.builder()
-        .code("PR-01")
+        .code(InfoError.NOT_FOUND.getCode())
         .message(ex.getMessage())
         .status(HttpStatus.NOT_FOUND)
         .time(LocalDateTime.now())
@@ -42,8 +43,8 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   protected ResponseEntity<Object> handleMissingPathVariable
       (MissingPathVariableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
     Error body = Error.builder()
-        .code("PR-02")
-        .message(ex.getVariableName() + " parameter is missing in the path")
+        .code(InfoError.MISSING_PATH_VARIABLE.getCode())
+        .message(ex.getVariableName() + InfoError.MISSING_PATH_VARIABLE.getMessage())
         .status(HttpStatus.BAD_REQUEST)
         .time(LocalDateTime.now())
         .build();
@@ -55,8 +56,8 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   protected ResponseEntity<Object> handleMissingServletRequestParameter
       (MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
     Error body = Error.builder()
-        .code("PR-03")
-        .message(ex.getParameterName() + " parameter is missing")
+        .code(InfoError.MISSING_REQUEST_PARAMETER.getCode())
+        .message(ex.getParameterName() + InfoError.MISSING_REQUEST_PARAMETER.getMessage())
         .status(HttpStatus.BAD_REQUEST)
         .time(LocalDateTime.now())
         .build();
@@ -68,8 +69,8 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   protected ResponseEntity<Object> handleMethodArgumentNotValid
       (MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
     ErrorDetail error = ErrorDetail.builder()
-        .code("PR-04")
-        .message("Error body request")
+        .code(InfoError.ARGUMENT_NOT_VALID.getCode())
+        .message(InfoError.ARGUMENT_NOT_VALID.getMessage())
         .status(HttpStatus.BAD_REQUEST)
         .time(LocalDateTime.now())
         .detail(formatDetailMessage(ex.getFieldErrors()))
@@ -91,8 +92,8 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   public ResponseEntity<ErrorDetail> handleConstraintViolation(ConstraintViolationException ex) {
 
     ErrorDetail body = ErrorDetail.builder()
-        .code("PR-05")
-        .message("It was not possible to process this request")
+        .code(InfoError.CONSTRAIN_VIOLATION.getCode())
+        .message(InfoError.CONSTRAIN_VIOLATION.getMessage())
         .status(HttpStatus.UNPROCESSABLE_ENTITY)
         .detail(buildValidationErrors(ex.getConstraintViolations()))
         .time(LocalDateTime.now())

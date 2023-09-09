@@ -83,7 +83,6 @@ public class ProductServiceImpl implements ProductService {
       productDB.setCategory(category);
     }
     mapper.update(productDB, productInDTO);
-
     productRepository.save(productDB);
   }
 
