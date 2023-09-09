@@ -27,7 +27,7 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(value = {NoFoundProductException.class, NoFoundCategoryException.class})
   public ResponseEntity<Error> handleNoProductException(
-      NoFoundProductException ex) {
+      Exception ex) {
     Error body = Error.builder()
         .code("PR-01")
         .message(ex.getMessage())

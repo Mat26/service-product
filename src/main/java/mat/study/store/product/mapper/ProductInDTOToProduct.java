@@ -13,10 +13,6 @@ public class ProductInDTOToProduct implements IMapper<ProductInDTO, Product> {
 
   @Override
   public Product map(ProductInDTO in) {
-    Category category = Category.builder()
-        .id(in.getCategory().getId())
-        .name(in.getCategory().getName())
-        .build();
 
     return Product.builder()
         .name(in.getName())
@@ -25,7 +21,6 @@ public class ProductInDTOToProduct implements IMapper<ProductInDTO, Product> {
         .price(in.getPrice())
         .status(ProductStatus.CREATED)
         .createAt(new Date())
-        .category(category)
         .build();
   }
 

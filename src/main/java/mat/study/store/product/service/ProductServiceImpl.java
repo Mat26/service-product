@@ -3,6 +3,7 @@ package mat.study.store.product.service;
 import mat.study.store.product.controller.ProductController;
 import mat.study.store.product.exeption.NoFoundProductException;
 import mat.study.store.product.mapper.ProductInDTOToProduct;
+import mat.study.store.product.model.entity.Category;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.enums.ProductStatus;
 import mat.study.store.product.model.request.ProductInDTO;
@@ -66,8 +67,9 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Product createProduct(ProductInDTO productInDTO) {
-    categoryService.getCategoryByName(productInDTO.getCategory().getName());
+    Category category = categoryService.getCategoryByName(productInDTO.getCategory().getName());
     Product product = mapper.map(productInDTO);
+    product.setCategory(category);
     return productRepository.save(product);
   }
 
@@ -75,7 +77,13 @@ public class ProductServiceImpl implements ProductService {
   @CachePut(key = "#id")
   public void updateProduct(Long id, ProductInDTO productInDTO) {
     Product productDB = getProduct(id);
+    if(productInDTO.getCategory() != null && productInDTO.getCategory().getName() != null
+        && !productInDTO.getCategory().getName().isEmpty()) {
+      Category category = categoryService.getCategoryByName(productInDTO.getCategory().getName());
+      productDB.setCategory(category);
+    }
     mapper.update(productDB, productInDTO);
+
     productRepository.save(productDB);
   }
 
