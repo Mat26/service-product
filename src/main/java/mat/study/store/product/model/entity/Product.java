@@ -17,7 +17,6 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,9 +26,11 @@ import mat.study.store.product.model.enums.ProductStatus;
 import java.util.Date;
 
 @Entity
-@Table(name="tbl_products")
+@Table(name = "tbl_products")
 @Data
-@AllArgsConstructor @NoArgsConstructor @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Product {
 
   @Id
@@ -40,7 +41,7 @@ public class Product {
   private String name;
   private String description;
 
-  @Min(value= 0, message = "Stock should not be less than 0")
+  @Min(value = 0, message = "Stock should not be less than 0")
   private Double stock = 0.0;
   private Double price;
 
@@ -52,8 +53,8 @@ public class Product {
   private Date createAt;
 
   @NotNull(message = "Category may not be empty")
-  @ManyToOne(fetch= FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
-  @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Category category;
 }

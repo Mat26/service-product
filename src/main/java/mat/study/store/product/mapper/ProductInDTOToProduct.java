@@ -1,6 +1,5 @@
 package mat.study.store.product.mapper;
 
-import mat.study.store.product.model.entity.Category;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.enums.ProductStatus;
 import mat.study.store.product.model.request.ProductInDTO;
@@ -15,10 +14,10 @@ public class ProductInDTOToProduct implements IMapper<ProductInDTO, Product> {
   public Product map(ProductInDTO in) {
 
     return Product.builder()
-        .name(in.getName())
-        .description(in.getDescription())
+        .name(in.name())
+        .description(in.description())
         .stock(0.0)
-        .price(in.getPrice())
+        .price(in.price())
         .status(ProductStatus.CREATED)
         .createAt(new Date())
         .build();
@@ -26,9 +25,9 @@ public class ProductInDTOToProduct implements IMapper<ProductInDTO, Product> {
 
   public void update(Product product, ProductInDTO in) {
 
-    String name = in.getName();
-    String description = in.getDescription();
-    Double price = in.getPrice();
+    String name = in.name();
+    String description = in.description();
+    Double price = in.price();
 
     if (name != null) {
       product.setName(name);

@@ -1,6 +1,5 @@
 package mat.study.store.product.service;
 
-import mat.study.store.product.controller.ProductController;
 import mat.study.store.product.exeption.NoFoundProductException;
 import mat.study.store.product.mapper.ProductInDTOToProduct;
 import mat.study.store.product.model.entity.Category;
@@ -8,8 +7,6 @@ import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.enums.ProductStatus;
 import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.repository.ProductRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -23,9 +20,6 @@ import java.util.List;
 @Service
 @CacheConfig(cacheNames = {"product"})
 public class ProductServiceImpl implements ProductService {
-
-  private static final Logger logger
-      = LoggerFactory.getLogger(ProductController.class);
 
   private final ProductRepository productRepository;
 
@@ -67,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Product createProduct(ProductInDTO productInDTO) {
-    Category category = categoryService.getCategoryByName(productInDTO.getCategory().getName());
+    Category category = categoryService.getCategoryByName(productInDTO.category().name());
     Product product = mapper.map(productInDTO);
     product.setCategory(category);
     return productRepository.save(product);
@@ -77,9 +71,9 @@ public class ProductServiceImpl implements ProductService {
   @CachePut(key = "#id")
   public void updateProduct(Long id, ProductInDTO productInDTO) {
     Product productDB = getProduct(id);
-    if(productInDTO.getCategory() != null && productInDTO.getCategory().getName() != null
-        && !productInDTO.getCategory().getName().isEmpty()) {
-      Category category = categoryService.getCategoryByName(productInDTO.getCategory().getName());
+    if (productInDTO.category() != null && productInDTO.category().name() != null
+        && !productInDTO.category().name().isEmpty()) {
+      Category category = categoryService.getCategoryByName(productInDTO.category().name());
       productDB.setCategory(category);
     }
     mapper.update(productDB, productInDTO);
