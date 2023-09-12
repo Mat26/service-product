@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@CacheConfig(cacheNames = {"product"})
+@CacheConfig(cacheNames = "product")
 public class ProductServiceImpl implements ProductService {
 
   private final ProductRepository productRepository;
@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   @CachePut(key = "#id")
-  public void updateProduct(Long id, ProductInDTO productInDTO) {
+  public Product updateProduct(Long id, ProductInDTO productInDTO) {
     Product productDB = getProduct(id);
     if (productInDTO.category() != null && productInDTO.category().name() != null
         && !productInDTO.category().name().isEmpty()) {
@@ -77,16 +77,16 @@ public class ProductServiceImpl implements ProductService {
       productDB.setCategory(category);
     }
     mapper.update(productDB, productInDTO);
-    productRepository.save(productDB);
+    return productRepository.save(productDB);
   }
 
   @Override
   @CachePut(key = "#id")
-  public void updateStock(Long id, Double quantity) {
+  public Product updateStock(Long id, Double quantity) {
     Product productDB = getProduct(id);
     Double stock = productDB.getStock() + quantity;
     productDB.setStock(stock);
-    productRepository.save(productDB);
+    return  productRepository.save(productDB);
   }
 
   @Override
