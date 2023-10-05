@@ -73,9 +73,13 @@ public class ProductServiceImpl implements ProductService {
   @CachePut(key = "#id")
   public Product updateStock(Long id, Double quantity) {
     Product productDB = getProduct(id);
-    Double stock = productDB.getStock() + quantity;
-    productDB.setStock(stock);
+    Double stockUpdated = calculateStock(productDB.getStock(), quantity);
+    productDB.setStock(stockUpdated);
     return productRepository.save(productDB);
+  }
+
+  private Double calculateStock(Double old, Double actual) {
+    return old + actual;
   }
 
   @Override
