@@ -2,15 +2,20 @@ package mat.study.store.product.controller;
 
 import jakarta.validation.Valid;
 import mat.study.store.product.model.entity.Category;
+import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
 import mat.study.store.product.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/categories")
@@ -29,5 +34,9 @@ public class CategoryController {
         .body(categoryService.createCategory(categoryInDTO));
   }
 
-  //El producto puede modificar la categoria, pero la Categoria puede modificarse, para luego modificarse para cada producto?
+  @GetMapping("/{id}")
+  public List<Product> getProductsByCategory(@PathVariable("id") Long id) {
+    return categoryService.getProductsByCategory(id);
+  }
+
 }

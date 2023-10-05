@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/v1/products")
 public class ProductController {
@@ -38,11 +36,6 @@ public class ProductController {
   @GetMapping
   public Page<Product> getProducts(@PageableDefault(size = 20) Pageable pageable) {
     return productService.getAll(pageable);
-  }
-
-  @GetMapping("/categories/{id}")
-  public List<Product> getProductsByCategory(@PathVariable("id") Long id) {
-    return productService.getProductsByCategory(id);
   }
 
   @GetMapping(value = "/{id}")

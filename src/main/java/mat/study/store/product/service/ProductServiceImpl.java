@@ -15,8 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @CacheConfig(cacheNames = "product")
 public class ProductServiceImpl implements ProductService {
@@ -37,15 +35,6 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public Page<Product> getAll(Pageable pageable) {
     Page<Product> products = productRepository.findAll(pageable);
-    if (products.isEmpty()) {
-      throw new NoFoundProductException();
-    }
-    return products;
-  }
-
-  @Override
-  public List<Product> getProductsByCategory(Long categoryId) {
-    List<Product> products = productRepository.findAllByCategoryId(categoryId);
     if (products.isEmpty()) {
       throw new NoFoundProductException();
     }
@@ -86,7 +75,7 @@ public class ProductServiceImpl implements ProductService {
     Product productDB = getProduct(id);
     Double stock = productDB.getStock() + quantity;
     productDB.setStock(stock);
-    return  productRepository.save(productDB);
+    return productRepository.save(productDB);
   }
 
   @Override
