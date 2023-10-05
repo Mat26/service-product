@@ -1,8 +1,6 @@
 package mat.study.store.product.model.enums;
 
-import lombok.Getter;
 
-@Getter
 public enum InfoError {
   NOT_FOUND("PR-01", ""),
   MISSING_PATH_VARIABLE("PR-02", " parameter is missing in the path"),
@@ -16,5 +14,13 @@ public enum InfoError {
   InfoError(String code, String message) {
     this.code = code;
     this.message = message;
+  }
+
+  public String getCode() {
+    return code;
+  }
+
+  public String getMessage() {
+    return message;
   }
 }
