@@ -1,5 +1,6 @@
 package mat.study.store.product.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -52,6 +53,7 @@ public class Product {
   @NotNull(message = "Category may not be empty")
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Category category;
 
   public Product() {
