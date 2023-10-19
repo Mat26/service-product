@@ -6,11 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Builder;
 
 @Entity
 @Table(name = "categories")
-@Builder
 public class Category {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +19,7 @@ public class Category {
   public Category() {
   }
 
-  public Category(Long id, String name) {
-    this.id = id;
+  public Category(String name) {
     this.name = name;
   }
 

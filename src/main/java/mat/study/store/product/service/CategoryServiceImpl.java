@@ -26,9 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   public Category createCategory(CategoryInDTO categoryInDTO) {
-    Category category = Category.builder()
-        .name(categoryInDTO.name())
-        .build();
+    Category category = new Category(categoryInDTO.name());
     return categoryRepository.save(category);
   }
 
