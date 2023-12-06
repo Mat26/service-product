@@ -1,4 +1,4 @@
-package mat.study.store.product.service;
+package mat.study.store.product.service.impl;
 
 import mat.study.store.product.exeption.NoFoundCategoryException;
 import mat.study.store.product.exeption.NoFoundProductException;
@@ -7,6 +7,7 @@ import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
 import mat.study.store.product.repository.CategoryRepository;
 import mat.study.store.product.repository.ProductRepository;
+import mat.study.store.product.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
