@@ -19,14 +19,12 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 import mat.study.store.product.model.enums.ProductStatus;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "products")
-@Builder
 @NamedEntityGraph(name = "Product.category",
     attributeNodes = @NamedAttributeNode("category"))
 public class Product {
@@ -68,6 +66,17 @@ public class Product {
     this.status = status;
     this.createAt = createAt;
     this.category = category;
+  }
+
+  public Product(Builder builder) {
+    this.id = builder.id;
+    this.name = builder.name;
+    this.description = builder.description;
+    this.stock = builder.stock;
+    this.price = builder.price;
+    this.status = builder.status;
+    this.createAt = builder.createAt;
+    this.category = builder.category;
   }
 
   public void setName(String name) {
@@ -124,6 +133,62 @@ public class Product {
 
   public Category getCategory() {
     return category;
+  }
+
+  public static class Builder {
+    private Long id;
+    private String name;
+    private String description;
+    private Double stock;
+    private Double price;
+    private ProductStatus status;
+    private Date createAt;
+    private Category category;
+
+    public Builder id(Long id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    public Builder stock(Double stock) {
+      this.stock = stock;
+      return this;
+    }
+
+    public Builder price(Double price) {
+      this.price = price;
+      return this;
+    }
+
+    public Builder status(ProductStatus status) {
+      this.status = status;
+      return this;
+    }
+
+    public Builder createAt(Date createAt) {
+      this.createAt = createAt;
+      return this;
+    }
+
+    public Builder category(Category category) {
+      this.category = category;
+      return this;
+    }
+
+    public Product build() {
+      return new Product(this);
+    }
+
   }
 
 }

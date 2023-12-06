@@ -29,7 +29,7 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   @ExceptionHandler(value = {NoFoundProductException.class, NoFoundCategoryException.class})
   public ResponseEntity<Error> handleNoProductException(
       Exception ex) {
-    Error body = Error.builder()
+    Error body = new Error.Builder()
         .code(InfoError.NOT_FOUND.getCode())
         .message(ex.getMessage())
         .status(HttpStatus.NOT_FOUND)
@@ -42,7 +42,7 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   @Override
   protected ResponseEntity<Object> handleMissingPathVariable
       (MissingPathVariableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-    Error body = Error.builder()
+    Error body = new Error.Builder()
         .code(InfoError.MISSING_PATH_VARIABLE.getCode())
         .message(ex.getVariableName() + InfoError.MISSING_PATH_VARIABLE.getMessage())
         .status(HttpStatus.BAD_REQUEST)
@@ -55,7 +55,7 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   @Override
   protected ResponseEntity<Object> handleMissingServletRequestParameter
       (MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-    Error body = Error.builder()
+    Error body = new Error.Builder()
         .code(InfoError.MISSING_REQUEST_PARAMETER.getCode())
         .message(ex.getParameterName() + InfoError.MISSING_REQUEST_PARAMETER.getMessage())
         .status(HttpStatus.BAD_REQUEST)
@@ -68,7 +68,7 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid
       (MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-    ErrorDetail error = ErrorDetail.builder()
+    ErrorDetail error = new ErrorDetail.Builder()
         .code(InfoError.ARGUMENT_NOT_VALID.getCode())
         .message(InfoError.ARGUMENT_NOT_VALID.getMessage())
         .status(HttpStatus.BAD_REQUEST)
@@ -91,12 +91,12 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<ErrorDetail> handleConstraintViolation(ConstraintViolationException ex) {
 
-    ErrorDetail body = ErrorDetail.builder()
+    ErrorDetail body = new ErrorDetail.Builder()
         .code(InfoError.CONSTRAIN_VIOLATION.getCode())
         .message(InfoError.CONSTRAIN_VIOLATION.getMessage())
         .status(HttpStatus.UNPROCESSABLE_ENTITY)
-        .detail(buildValidationErrors(ex.getConstraintViolations()))
         .time(LocalDateTime.now())
+        .detail(buildValidationErrors(ex.getConstraintViolations()))
         .build();
     return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
   }
