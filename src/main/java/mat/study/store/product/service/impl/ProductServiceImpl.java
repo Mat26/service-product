@@ -1,4 +1,4 @@
-package mat.study.store.product.service;
+package mat.study.store.product.service.impl;
 
 import mat.study.store.product.exeption.NoFoundProductException;
 import mat.study.store.product.mapper.ProductInDTOToProduct;
@@ -7,6 +7,8 @@ import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.enums.ProductStatus;
 import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.repository.ProductRepository;
+import mat.study.store.product.service.CategoryService;
+import mat.study.store.product.service.ProductService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
