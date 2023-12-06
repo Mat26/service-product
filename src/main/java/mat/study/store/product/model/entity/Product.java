@@ -19,14 +19,12 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 import mat.study.store.product.model.enums.ProductStatus;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "products")
-@Builder
 @NamedEntityGraph(name = "Product.category",
     attributeNodes = @NamedAttributeNode("category"))
 public class Product {
