@@ -36,11 +36,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Page<Product> getAll(Pageable pageable) {
-    Page<Product> products = productRepository.findAll(pageable);
-    if (products.isEmpty()) {
-      throw new NoFoundProductException();
-    }
-    return products;
+    return productRepository.findAll(pageable);
   }
 
   @Override
