@@ -1,6 +1,7 @@
 package mat.study.store.product.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Positive;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.ProductInDTO;
@@ -61,7 +62,7 @@ public class ProductController {
   @PutMapping(value = "/{id}/stock")
   public ResponseEntity<Product> updateStockProduct
       (@PathVariable Long id, @RequestParam(name = "quantity")
-      @Positive(message = "Stock should be greater than 0") Double quantity) {
+      @DecimalMin(value = "0.0", message = "Stock should be greater than 0") Double quantity) {
     productService.updateStock(id, quantity);
     return ResponseEntity.noContent().build();
   }
