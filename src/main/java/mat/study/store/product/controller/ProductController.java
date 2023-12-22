@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Validated
 @RequestMapping(value = "/v1/products")
 public class ProductController {
 
@@ -39,7 +41,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/{id}")
-  public Product getProduct(@PathVariable("id") Long id) {
+  public Product getProduct(@PathVariable("id") @Positive(message = "Id must be a positive value.") Long id) {
     return productService.getProduct(id);
   }
 
