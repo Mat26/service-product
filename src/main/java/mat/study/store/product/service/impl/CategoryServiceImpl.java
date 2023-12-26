@@ -26,6 +26,12 @@ public class CategoryServiceImpl implements CategoryService {
     this.productRepository = productRepository;
   }
 
+  @Override
+  public Category getCategory(Long id) {
+    return categoryRepository.findById(id)
+        .orElseThrow(() -> new NoFoundCategoryException(id));
+  }
+
   public Category createCategory(CategoryInDTO categoryInDTO) {
     Category category = new Category(categoryInDTO.name());
     return categoryRepository.save(category);
@@ -44,5 +50,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
     return products;
   }
+
+
 
 }

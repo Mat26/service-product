@@ -11,9 +11,9 @@ public interface ProductService {
 
   Product getProduct(Long id);
 
-  Product createProduct(ProductInDTO productInDTO);
+  Product createProduct(Long id, ProductInDTO productInDTO);
 
-  Product updateProduct(Long id, ProductInDTO productInDTO);
+  Product updateProduct(Long idCategory, Long idProduct, ProductInDTO productInDTO);
 
   Product updateStock(Long id, Double quantity);
 

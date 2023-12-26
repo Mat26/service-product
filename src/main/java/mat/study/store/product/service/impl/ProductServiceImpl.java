@@ -47,22 +47,18 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Product createProduct(ProductInDTO productInDTO) {
-    Category category = categoryService.getCategoryByName(productInDTO.category().name());
+  public Product createProduct(Long id, ProductInDTO productInDTO) {
+    Category category = categoryService.getCategory(id);
     Product product = mapper.map(productInDTO);
     product.setCategory(category);
     return productRepository.save(product);
   }
 
   @Override
-  @CachePut(key = "#id")
-  public Product updateProduct(Long id, ProductInDTO productInDTO) {
-    Product productDB = getProduct(id);
-    if (productInDTO.category() != null && productInDTO.category().name() != null
-        && !productInDTO.category().name().isEmpty()) {
-      Category category = categoryService.getCategoryByName(productInDTO.category().name());
-      productDB.setCategory(category);
-    }
+  @CachePut(key = "#idProduct")
+  public Product updateProduct(Long idCategory, Long idProduct, ProductInDTO productInDTO) {
+    categoryService.getCategory(idCategory);
+    Product productDB = getProduct(idProduct);
     mapper.update(productDB, productInDTO);
     return productRepository.save(productDB);
   }

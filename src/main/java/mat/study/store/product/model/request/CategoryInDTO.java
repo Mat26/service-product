@@ -1,9 +1,9 @@
 package mat.study.store.product.model.request;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 
 public record CategoryInDTO(Long id,
-                            @NotEmpty(message = "Name may not be empty") String name) {
+                            @NotBlank(message = "Name may not be empty") String name) {
 
 }

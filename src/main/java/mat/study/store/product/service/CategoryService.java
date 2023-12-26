@@ -7,6 +7,8 @@ import mat.study.store.product.model.request.CategoryInDTO;
 import java.util.List;
 
 public interface CategoryService {
+  Category getCategory(Long id);
+  
   Category createCategory(CategoryInDTO categoryInDTO);
 
   Category getCategoryByName(String name);
