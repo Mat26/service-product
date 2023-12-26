@@ -1,7 +1,6 @@
 package mat.study.store.product.controller;
 
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Positive;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
