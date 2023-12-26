@@ -36,7 +36,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/{id}")
-  public Product getProduct(@PathVariable("id") @Positive(message = "Id must be a positive value.") Long id) {
+  public Product getProduct(@PathVariable("id") Long id) {
     return productService.getProduct(id);
   }
 
