@@ -1,0 +1,364 @@
+ HV000001: Hibernate Validator 8.0.1.Final
+ Starting ServiceProductApplication using Java 17.0.1 with PID 22312 (C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\target\classes started by mtrujillo in C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product)
+ No active profile set, falling back to 1 default profile: "default"
+ Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+ Finished Spring Data repository scanning in 89 ms. Found 3 JPA repository interfaces.
+ Tomcat initialized with port(s): 8081 (http)
+ Initializing ProtocolHandler ["http-nio-8081"]
+ Starting service [Tomcat]
+ Starting Servlet engine: [Apache Tomcat/10.1.11]
+ Initializing Spring embedded WebApplicationContext
+ Root WebApplicationContext: initialization completed in 2149 ms
+ HikariPool-1 - Starting...
+ HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:spring-security user=SA
+ HikariPool-1 - Start completed.
+ H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:spring-security'
+ HHH000204: Processing PersistenceUnitInfo [name: default]
+ HHH000412: Hibernate ORM core version 6.2.6.Final
+ HHH000406: Using bytecode reflection optimizer
+ HHH000021: Bytecode provider name : bytebuddy
+ No LoadTimeWeaver setup: ignoring JPA class transformer
+ HHH000021: Bytecode provider name : bytebuddy
+ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+ Initialized JPA EntityManagerFactory for persistence unit 'default'
+ Hibernate is in classpath; If applicable, HQL parser will be used.
+ spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e38d2a2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@79408109, org.springframework.security.web.context.SecurityContextHolderFilter@5add0cc0, org.springframework.security.web.header.HeaderWriterFilter@56511eda, org.springframework.security.web.authentication.logout.LogoutFilter@44872224, mat.study.store.product.config.JwtAuthenticationFilter@6cb759d5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e470a51, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@727b3b0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33671907, org.springframework.security.web.session.SessionManagementFilter@d319d2c, org.springframework.security.web.access.ExceptionTranslationFilter@526a1b51, org.springframework.security.web.access.intercept.AuthorizationFilter@10bae3c0]
+ Exposing 13 endpoint(s) beneath base path '/actuator'
+ Starting ProtocolHandler ["http-nio-8081"]
+ Tomcat started on port(s): 8081 (http) with context path ''
+ Started ServiceProductApplication in 5.537 seconds (process running for 6.779)
+ Failed to register application as Application(name=product-service, managementUrl=http://localhost:8080/actuator, healthUrl=http://localhost:8080/actuator/health, serviceUrl=http://EN911585.endava.net:8081/) at spring-boot-admin ([http://localhost:8086/instances]): I/O error on POST request for "http://localhost:8086/instances": Connection refused: no further information. Further attempts are logged on DEBUG level
+ Initializing Spring DispatcherServlet 'dispatcherServlet'
+ Initializing Servlet 'dispatcherServlet'
+ Completed initialization in 3 ms
+ Server has received a request on thread Thread[http-nio-8081-exec-1,5,main]
+ > POST /api/v1/auth/signup?
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> cache-control: no-cache
+> connection: keep-alive
+> content-length: 125
+> content-type: application/json
+> host: localhost:8081
+> postman-token: 706d97c7-e4ae-4e32-9bd0-10bbb2fc81f1
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-1,5,main]
+ Request payload: [{
+    "firstName": "testUser",
+    "lastName":"testLastname",
+    "email":"userTest@gmail.com",
+    "password":"*****"
+}]
+  > 200 OK
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Response payload: [{"token":"*****"}]
+ Server has received a request on thread Thread[http-nio-8081-exec-5,5,main]
+ > POST /v1/categories/1
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyVGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MDQyNTAyMzMsImV4cCI6MTcwNTQ4MTQ4M30.C8AVe7Dlx8WEQcZFURJGmPXuwjJLnGM--vxnG3kvH7w
+> cache-control: no-cache
+> connection: keep-alive
+> content-length: 82
+> content-type: application/json
+> host: localhost:8081
+> postman-token: c47bfa13-c2e2-498f-8680-f43d38c54245
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-5,5,main]
+ Request payload: [{
+    "name":"juego2",
+    "description":"asdasdas12232325",
+    "price":123
+}]
+  > 201 Created
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Response payload: [{"id":1,"name":"juego2","description":"asdasdas12232325","stock":0.0,"price":123.0,"status":"CREATED","createAt":"2024-01-03T02:50:45.932+00:00","category":{"id":1,"name":"shoes"}}]
+ Closing JPA EntityManagerFactory for persistence unit 'default'
+ HikariPool-1 - Shutdown initiated...
+ HikariPool-1 - Shutdown completed.
+ HV000001: Hibernate Validator 8.0.1.Final
+ Starting ServiceProductApplication using Java 17.0.1 with PID 27508 (C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\target\classes started by mtrujillo in C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product)
+ No active profile set, falling back to 1 default profile: "default"
+ Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+ Finished Spring Data repository scanning in 84 ms. Found 3 JPA repository interfaces.
+ Tomcat initialized with port(s): 8081 (http)
+ Initializing ProtocolHandler ["http-nio-8081"]
+ Starting service [Tomcat]
+ Starting Servlet engine: [Apache Tomcat/10.1.11]
+ Initializing Spring embedded WebApplicationContext
+ Root WebApplicationContext: initialization completed in 2140 ms
+ HikariPool-1 - Starting...
+ HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:spring-security user=SA
+ HikariPool-1 - Start completed.
+ H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:spring-security'
+ HHH000204: Processing PersistenceUnitInfo [name: default]
+ HHH000412: Hibernate ORM core version 6.2.6.Final
+ HHH000406: Using bytecode reflection optimizer
+ HHH000021: Bytecode provider name : bytebuddy
+ No LoadTimeWeaver setup: ignoring JPA class transformer
+ HHH000021: Bytecode provider name : bytebuddy
+ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+ Initialized JPA EntityManagerFactory for persistence unit 'default'
+ Hibernate is in classpath; If applicable, HQL parser will be used.
+ spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2c8469fe, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78626209, org.springframework.security.web.context.SecurityContextHolderFilter@268ee31d, org.springframework.security.web.header.HeaderWriterFilter@7127f04b, org.springframework.security.web.authentication.logout.LogoutFilter@c53dfb2, mat.study.store.product.config.JwtAuthenticationFilter@40696fc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48d84d75, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ebe6c24, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b9b244e, org.springframework.security.web.session.SessionManagementFilter@6a16ee0d, org.springframework.security.web.access.ExceptionTranslationFilter@5a503cf0, org.springframework.security.web.access.intercept.AuthorizationFilter@54d62c35]
+ Exposing 13 endpoint(s) beneath base path '/actuator'
+ Starting ProtocolHandler ["http-nio-8081"]
+ Tomcat started on port(s): 8081 (http) with context path ''
+ Started ServiceProductApplication in 5.387 seconds (process running for 6.653)
+ Failed to register application as Application(name=product-service, managementUrl=http://localhost:8080/actuator, healthUrl=http://localhost:8080/actuator/health, serviceUrl=http://EN911585.endava.net:8081/) at spring-boot-admin ([http://localhost:8086/instances]): I/O error on POST request for "http://localhost:8086/instances": Connection refused: no further information. Further attempts are logged on DEBUG level
+ Initializing Spring DispatcherServlet 'dispatcherServlet'
+ Initializing Servlet 'dispatcherServlet'
+ Completed initialization in 5 ms
+ Server has received a request on thread Thread[http-nio-8081-exec-4,5,main]
+ > POST /api/v1/auth/signup?
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> cache-control: no-cache
+> connection: keep-alive
+> content-length: 125
+> content-type: application/json
+> host: localhost:8081
+> postman-token: ef75dd43-2e01-4380-8dce-91599c5a8fca
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-4,5,main]
+ Request payload: [{
+    "firstName": "testUser",
+    "lastName":"testLastname",
+    "email":"userTest@gmail.com",
+    "password":"*****"
+}]
+  > 200 OK
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Response payload: [{"token":"*****"}]
+ Server has received a request on thread Thread[http-nio-8081-exec-3,5,main]
+ > POST /v1/categories/1
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyVGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MDQyNTE0MjIsImV4cCI6MTcwNTQ4MjY3Mn0.PnMsLEGRMz4gXUNszJY4GjwXXnoVaC2APq-kyfnvcFk
+> cache-control: no-cache
+> connection: keep-alive
+> content-length: 82
+> content-type: application/json
+> host: localhost:8081
+> postman-token: 96eaa3fc-ca1c-4acc-833d-08a26bc18fb9
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-3,5,main]
+ Request payload: [{
+    "name":"juego2",
+    "description":"asdasdas12232325",
+    "price":123
+}]
+  > 201 Created
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Response payload: [{"id":1,"name":"juego2","description":"asdasdas12232325","stock":0.0,"price":123.0,"status":"CREATED","createAt":"2024-01-03T03:10:35.217+00:00","category":{"id":1,"name":"shoes"}}]
+ Server has received a request on thread Thread[http-nio-8081-exec-2,5,main]
+ > GET /v1/products
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyVGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MDQyNTE0MjIsImV4cCI6MTcwNTQ4MjY3Mn0.PnMsLEGRMz4gXUNszJY4GjwXXnoVaC2APq-kyfnvcFk
+> cache-control: no-cache
+> connection: keep-alive
+> host: localhost:8081
+> postman-token: 5a774879-b7c9-470f-84f9-f405e002c980
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-2,5,main]
+  > 200 OK
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Response payload: [{"content":[{"id":1,"name":"juego2","description":"asdasdas12232325","stock":0.0,"price":123.0,"status":"CREATED","createAt":"2024-01-03T03:10:35.217+00:00","category":{"id":1,"name":"shoes"}}],"pageable":{"sort":{"empty":true,"sorted":false,"unsorted":true},"offset":0,"pageNumber":0,"pageSize":20,"unpaged":false,"paged":true},"last":true,"totalPages":1,"totalElements":1,"size":20,"number":0,"sort":{"empty":true,"sorted":false,"unsorted":true},"first":true,"numberOfElements":1,"empty":false}]
+ Server has received a request on thread Thread[http-nio-8081-exec-5,5,main]
+ > PATCH /v1/categories/2/products/1
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyVGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MDQyNTE0MjIsImV4cCI6MTcwNTQ4MjY3Mn0.PnMsLEGRMz4gXUNszJY4GjwXXnoVaC2APq-kyfnvcFk
+> cache-control: no-cache
+> connection: keep-alive
+> content-length: 172
+> content-type: application/json
+> host: localhost:8081
+> postman-token: c9b80152-b27f-4d7b-af5d-ba69d7bb9d9c
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-5,5,main]
+ Request payload: [{
+    "name": "Adidas Cloudfoam Ultimate",
+    "description": "Walk in the air in the black / black CLOUDFOAM ULTIMATE running shoe from ADIDAS",
+    "price": -2.89  
+}]
+  > 204 No Content
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Server has received a request on thread Thread[http-nio-8081-exec-6,5,main]
+ > DELETE /v1/products/1
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> cache-control: no-cache
+> connection: keep-alive
+> host: localhost:8081
+> postman-token: 3ea133e9-9168-40e8-bc93-eb0889a56a6c
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-6,5,main]
+  > 403 Forbidden
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Server has received a request on thread Thread[http-nio-8081-exec-7,5,main]
+ > DELETE /v1/products/1
+ > accept: */*
+> accept-encoding: gzip, deflate, br
+> authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyVGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MDQyNTE0MjIsImV4cCI6MTcwNTQ4MjY3Mn0.PnMsLEGRMz4gXUNszJY4GjwXXnoVaC2APq-kyfnvcFk
+> cache-control: no-cache
+> connection: keep-alive
+> host: localhost:8081
+> postman-token: de6c1257-9f74-414d-ab07-02690caa3861
+> user-agent: PostmanRuntime/7.36.0
+
+ Server responded with a response on thread Thread[http-nio-8081-exec-7,5,main]
+  > 204 No Content
+ > Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+> Expires: 0
+> Pragma: no-cache
+> X-Content-Type-Options: nosniff
+> X-XSS-Protection: 0
+
+ Closing JPA EntityManagerFactory for persistence unit 'default'
+ HikariPool-1 - Shutdown initiated...
+ HikariPool-1 - Shutdown completed.
+ Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@505a9d7c - There is no conversion class registered for conversion word [Blue]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@505a9d7c - [Blue] is not a valid conversion word
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:356)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at mat.study.store.product.ServiceProductApplication.main(ServiceProductApplication.java:14)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@505a9d7c - There is no conversion class registered for conversion word [Blue]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@505a9d7c - [Blue] is not a valid conversion word
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:260)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:247)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:319)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:187)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
+	... 19 common frames omitted
+ HV000001: Hibernate Validator 8.0.1.Final
+ Starting ServiceProductApplication using Java 17.0.1 with PID 27328 (C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\target\classes started by mtrujillo in C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product)
+ No active profile set, falling back to 1 default profile: "default"
+ Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+ Finished Spring Data repository scanning in 127 ms. Found 3 JPA repository interfaces.
+ Tomcat initialized with port(s): 8081 (http)
+ Initializing ProtocolHandler ["http-nio-8081"]
+ Starting service [Tomcat]
+ Starting Servlet engine: [Apache Tomcat/10.1.11]
+ Initializing Spring embedded WebApplicationContext
+ Root WebApplicationContext: initialization completed in 2612 ms
+ HikariPool-1 - Starting...
+ HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:spring-security user=SA
+ HikariPool-1 - Start completed.
+ H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:spring-security'
+ HHH000204: Processing PersistenceUnitInfo [name: default]
+ HHH000412: Hibernate ORM core version 6.2.6.Final
+ HHH000406: Using bytecode reflection optimizer
+ HHH000021: Bytecode provider name : bytebuddy
+ No LoadTimeWeaver setup: ignoring JPA class transformer
+ HHH000021: Bytecode provider name : bytebuddy
+ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+ Initialized JPA EntityManagerFactory for persistence unit 'default'
+ Hibernate is in classpath; If applicable, HQL parser will be used.
+ spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38f4a641, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1902ad0f, org.springframework.security.web.context.SecurityContextHolderFilter@1cc5d8a9, org.springframework.security.web.header.HeaderWriterFilter@461c0572, org.springframework.security.web.authentication.logout.LogoutFilter@2c8469fe, mat.study.store.product.config.JwtAuthenticationFilter@49bc1f6c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@921dbcf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79408109, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@653fbbfc, org.springframework.security.web.session.SessionManagementFilter@1d09fb8e, org.springframework.security.web.access.ExceptionTranslationFilter@3f563397, org.springframework.security.web.access.intercept.AuthorizationFilter@3803bc1a]
+ Exposing 13 endpoint(s) beneath base path '/actuator'
+ Starting ProtocolHandler ["http-nio-8081"]
+ Tomcat started on port(s): 8081 (http) with context path ''
+ Started ServiceProductApplication in 6.384 seconds (process running for 7.626)
+ Failed to register application as Application(name=product-service, managementUrl=http://localhost:8080/actuator, healthUrl=http://localhost:8080/actuator/health, serviceUrl=http://EN911585.endava.net:8081/) at spring-boot-admin ([http://localhost:8086/instances]): I/O error on POST request for "http://localhost:8086/instances": Connection refused: no further information. Further attempts are logged on DEBUG level
+ Closing JPA EntityManagerFactory for persistence unit 'default'
+ HV000001: Hibernate Validator 8.0.1.Final
+ Starting ServiceProductApplication using Java 17.0.1 with PID 3656 (C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\target\classes started by mtrujillo in C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product)
+ No active profile set, falling back to 1 default profile: "default"
+ Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+ Finished Spring Data repository scanning in 180 ms. Found 3 JPA repository interfaces.
+ Tomcat initialized with port(s): 8081 (http)
+ Initializing ProtocolHandler ["http-nio-8081"]
+ Starting service [Tomcat]
+ Starting Servlet engine: [Apache Tomcat/10.1.11]
+ Initializing Spring embedded WebApplicationContext
+ Root WebApplicationContext: initialization completed in 2732 ms
+ HikariPool-1 - Starting...
+ HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:spring-security user=SA
+ HikariPool-1 - Start completed.
+ H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:spring-security'
+ HHH000204: Processing PersistenceUnitInfo [name: default]
+ HHH000412: Hibernate ORM core version 6.2.6.Final
+ HHH000406: Using bytecode reflection optimizer
+ HHH000021: Bytecode provider name : bytebuddy
+ No LoadTimeWeaver setup: ignoring JPA class transformer
+ HHH000021: Bytecode provider name : bytebuddy
+ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+ Initialized JPA EntityManagerFactory for persistence unit 'default'
+ Hibernate is in classpath; If applicable, HQL parser will be used.
+ spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@921dbcf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@163b8acc, org.springframework.security.web.context.SecurityContextHolderFilter@d319d2c, org.springframework.security.web.header.HeaderWriterFilter@4f45290f, org.springframework.security.web.authentication.logout.LogoutFilter@48d84d75, mat.study.store.product.config.JwtAuthenticationFilter@7f5a25e2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@eaf3dd0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6971f5f4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24090832, org.springframework.security.web.session.SessionManagementFilter@1ae69abe, org.springframework.security.web.access.ExceptionTranslationFilter@2b26d289, org.springframework.security.web.access.intercept.AuthorizationFilter@49868df8]
+ Exposing 13 endpoint(s) beneath base path '/actuator'
+ Starting ProtocolHandler ["http-nio-8081"]
+ Tomcat started on port(s): 8081 (http) with context path ''
+ Started ServiceProductApplication in 6.2 seconds (process running for 7.529)
+ Failed to register application as Application(name=product-service, managementUrl=http://localhost:8080/actuator, healthUrl=http://localhost:8080/actuator/health, serviceUrl=http://EN911585.endava.net:8081/) at spring-boot-admin ([http://localhost:8086/instances]): I/O error on POST request for "http://localhost:8086/instances": Connection refused: no further information. Further attempts are logged on DEBUG level
+ Closing JPA EntityManagerFactory for persistence unit 'default'
