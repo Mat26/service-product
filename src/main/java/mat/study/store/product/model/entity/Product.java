@@ -19,6 +19,11 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import mat.study.store.product.model.enums.ProductStatus;
 
 import java.util.Date;
@@ -27,6 +32,11 @@ import java.util.Date;
 @Table(name = "products")
 @NamedEntityGraph(name = "Product.category",
     attributeNodes = @NamedAttributeNode("category"))
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@Setter
 public class Product {
 
   @Id
@@ -54,141 +64,5 @@ public class Product {
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Category category;
 
-  public Product() {
-  }
-
-  public Product(Long id, String name, String description, Double stock, Double price, ProductStatus status, Date createAt, Category category) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.stock = stock;
-    this.price = price;
-    this.status = status;
-    this.createAt = createAt;
-    this.category = category;
-  }
-
-  public Product(Builder builder) {
-    this.id = builder.id;
-    this.name = builder.name;
-    this.description = builder.description;
-    this.stock = builder.stock;
-    this.price = builder.price;
-    this.status = builder.status;
-    this.createAt = builder.createAt;
-    this.category = builder.category;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public void setStock(Double stock) {
-    this.stock = stock;
-  }
-
-  public void setPrice(Double price) {
-    this.price = price;
-  }
-
-  public void setStatus(ProductStatus status) {
-    this.status = status;
-  }
-
-  public void setCategory(Category category) {
-    this.category = category;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public Double getStock() {
-    return stock;
-  }
-
-  public Double getPrice() {
-    return price;
-  }
-
-  public ProductStatus getStatus() {
-    return status;
-  }
-
-  public Date getCreateAt() {
-    return createAt;
-  }
-
-  public Category getCategory() {
-    return category;
-  }
-
-  public static class Builder {
-    private Long id;
-    private String name;
-    private String description;
-    private Double stock;
-    private Double price;
-    private ProductStatus status;
-    private Date createAt;
-    private Category category;
-
-    public Builder id(Long id) {
-      this.id = id;
-      return this;
-    }
-
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    public Builder stock(Double stock) {
-      this.stock = stock;
-      return this;
-    }
-
-    public Builder price(Double price) {
-      this.price = price;
-      return this;
-    }
-
-    public Builder status(ProductStatus status) {
-      this.status = status;
-      return this;
-    }
-
-    public Builder createAt(Date createAt) {
-      this.createAt = createAt;
-      return this;
-    }
-
-    public Builder category(Category category) {
-      this.category = category;
-      return this;
-    }
-
-    public Product build() {
-      return new Product(this);
-    }
-
-  }
 
 }

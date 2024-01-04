@@ -6,18 +6,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "categories")
+@Getter
+@NoArgsConstructor
 public class Category {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @NotEmpty(message = "Name may not be empty")
   private String name;
-
-  public Category() {
-  }
 
   public Category(String name) {
     this.name = name;

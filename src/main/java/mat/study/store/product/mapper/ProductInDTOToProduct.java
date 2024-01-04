@@ -13,7 +13,7 @@ public class ProductInDTOToProduct implements IMapper<ProductInDTO, Product> {
   @Override
   public Product map(ProductInDTO in) {
 
-    return new Product.Builder()
+    return Product.builder()
         .name(in.name())
         .description(in.description())
         .stock(0.0)
