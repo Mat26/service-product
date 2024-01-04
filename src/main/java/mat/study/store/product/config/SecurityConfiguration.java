@@ -28,8 +28,20 @@ public class SecurityConfiguration {
     private final UserService userService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers(antMatcher("/h2-console/**"))
+        http.
+            csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(request -> request.requestMatchers(
+                    antMatcher("/h2-console/**")
+                        ,antMatcher("/v2/api-docs")
+                        ,antMatcher("/v3/api-docs")
+                        ,antMatcher("/v3/api-docs/**")
+                        ,antMatcher("/swagger-resources")
+                        ,antMatcher("/swagger-resources/**")
+                        ,antMatcher("/configuration/ui")
+                        ,antMatcher("/configuration/security")
+                        ,antMatcher("/swagger-ui/**")
+                        ,antMatcher("/webjars/**")
+                        ,antMatcher("/swagger-ui.html"))
                         .permitAll())
                 .authorizeHttpRequests(request -> request.requestMatchers(antMatcher("/api/v1/auth/**"))
                         .permitAll().anyRequest().authenticated())
