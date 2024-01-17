@@ -1,4 +1,4 @@
-package mat.study.store.product.log;
+package mat.study.store.product.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
