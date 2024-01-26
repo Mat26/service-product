@@ -13,7 +13,6 @@ import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
 import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.model.response.Error;
-import mat.study.store.product.model.response.ErrorDetail;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

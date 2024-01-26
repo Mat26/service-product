@@ -4,8 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
 
-public record CategoryInDTO(Long id,
-                            @Schema(example = "shoes")
+public record CategoryInDTO(@Schema(example = "shoes")
                             @NotBlank(message = "Name may not be empty") String name) {
 
 }
