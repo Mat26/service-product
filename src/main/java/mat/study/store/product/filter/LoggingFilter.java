@@ -86,7 +86,7 @@ public class LoggingFilter extends OncePerRequestFilter {
       Pattern pattern = Pattern.compile(regex);
       Matcher matcher = pattern.matcher(payload);
       while (matcher.find()) {
-        String fieldValue = matcher.group(1);
+        String fieldValue = matcher.group(1);//TODO VALIDAR CUANDO NO SEA DEBUG
         payload = payload.replace(fieldValue, "*****");
       }
     }

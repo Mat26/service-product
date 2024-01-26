@@ -35,8 +35,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     try {
       userRepository.save(user);
     } catch (Exception e) {
-      throw new NonUniqueUserException();
-    }
+      throw new NonUniqueUserException();//TODO DEVOLVER UN 400
+          }
 
     var jwt = jwtService.generateToken(user);
     return JwtAuthenticationResponse.builder()
