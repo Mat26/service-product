@@ -26,10 +26,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   @Override
   public JwtAuthenticationResponse signup(RegisterRequest request) throws Exception {
     var user = User.builder()
-        .firstName(request.getFirstName())
-        .lastName(request.getLastName())
-        .email(request.getEmail())
-        .password(passwordEncoder.encode(request.getPassword()))
+        .firstName(request.firstName())
+        .lastName(request.lastName())
+        .email(request.email())
+        .password(passwordEncoder.encode(request.password()))
         .role(Role.USER)
         .build();
     try {
@@ -47,8 +47,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   @Override
   public JwtAuthenticationResponse signin(AuthenticationRequest request) {
     authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-    var user = userRepository.findByEmail(request.getEmail())
+        new UsernamePasswordAuthenticationToken(request.email(), request.password()));
+    var user = userRepository.findByEmail(request.email())
         .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
     var jwt = jwtService.generateToken(user);
     return JwtAuthenticationResponse.builder().token(jwt).build();
