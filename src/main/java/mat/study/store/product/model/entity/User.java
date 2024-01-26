@@ -1,6 +1,8 @@
 package mat.study.store.product.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,8 +28,11 @@ public class User implements UserDetails {
     private Integer id;
     private String firstName;
     private String lastName;
+    @Email
+    @NotBlank(message = "Email may not be empty")
     @Column(unique=true)
     private String email;
+    @NotBlank(message = "Password may not be empty")
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
