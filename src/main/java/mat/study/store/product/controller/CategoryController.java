@@ -43,13 +43,6 @@ public class CategoryController implements CategoryApi {
   }
 
   @Override
-  public ResponseEntity<Product> createProduct(ProductInDTO productInDTO,
-                                               Long id) {
-    return ResponseEntity.status(HttpStatus.CREATED)
-        .body(productService.createProduct(id, productInDTO));
-  }
-
-  @Override
   public ResponseEntity<Void> updateProduct(Long idCategory,
                                             Long idProduct,
                                             ProductInDTO productInDTO) {

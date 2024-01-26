@@ -2,10 +2,12 @@ package mat.study.store.product.controller;
 
 import mat.study.store.product.controller.api.ProductApi;
 import mat.study.store.product.model.entity.Product;
+import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +30,13 @@ public class ProductController implements ProductApi {
   @Override
   public Product getProduct(Long id) {
     return productService.getProduct(id);
+  }
+
+  @Override
+  public ResponseEntity<Product> createProduct(ProductInDTO productInDTO,
+                                               Long id) {
+    return ResponseEntity.status(HttpStatus.CREATED)
+        .body(productService.createProduct(id, productInDTO));
   }
 
   @Override

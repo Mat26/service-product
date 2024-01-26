@@ -113,42 +113,6 @@ public interface CategoryApi {
       (@Valid @RequestBody CategoryInDTO categoryInDTO);
 
   @Operation(
-      summary = "Create Product",
-      description = "Create Product",
-      responses = {
-          @ApiResponse(
-              responseCode = "200",
-              description = "Success Response",
-              content = {@Content(schema = @Schema(implementation = Product.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
-          ),
-          @ApiResponse(
-              responseCode = "400",
-              description = "Error body request",
-              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
-          ),
-          @ApiResponse(
-              responseCode = "403",
-              content = {@Content(schema = @Schema())}
-          ),
-          @ApiResponse(
-              responseCode = "404",
-              description = "Invalid id supplied",
-              content = {@Content(schema = @Schema(implementation = Error.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
-          ),
-          @ApiResponse(responseCode = "500",
-              content = {@Content(schema = @Schema())})
-      }, security = {
-      @SecurityRequirement(name = "bearerAuth")
-  }
-  )
-  @PostMapping("/{id}")
-  ResponseEntity<Product> createProduct(@Valid @RequestBody ProductInDTO productInDTO,
-                                        @PathVariable("id") Long id);
-
-  @Operation(
       summary = "Update product",
       description = "Update product",
       responses = {

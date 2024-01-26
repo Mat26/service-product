@@ -6,8 +6,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import mat.study.store.product.model.entity.Product;
+import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.model.response.Error;
 import mat.study.store.product.model.response.ErrorDetail;
 import org.springdoc.core.annotations.ParameterObject;
@@ -20,13 +22,15 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Tag(name = "Product")
-@RequestMapping(value = "/api/v1/category/products")
+@RequestMapping(value = "/api/v1/category")
 @Validated
 public interface ProductApi {
   @Operation(
@@ -50,7 +54,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @GetMapping
+  @GetMapping("/products")
   Page<Product> getProducts(@ParameterObject @PageableDefault(size = 20) Pageable pageable);
 
   @Operation(
@@ -80,8 +84,44 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @GetMapping(value = "/{id}")
+  @GetMapping(value = "/products/{id}")
   Product getProduct(@PathVariable("id") Long id);
+
+  @Operation(
+      summary = "Create Product",
+      description = "Create Product",
+      responses = {
+          @ApiResponse(
+              responseCode = "200",
+              description = "Success Response",
+              content = {@Content(schema = @Schema(implementation = Product.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(
+              responseCode = "400",
+              description = "Error body request",
+              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(
+              responseCode = "403",
+              content = {@Content(schema = @Schema())}
+          ),
+          @ApiResponse(
+              responseCode = "404",
+              description = "Invalid id supplied",
+              content = {@Content(schema = @Schema(implementation = Error.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(responseCode = "500",
+              content = {@Content(schema = @Schema())})
+      }, security = {
+      @SecurityRequirement(name = "bearerAuth")
+  }
+  )
+  @PostMapping("/{id}/products")
+  ResponseEntity<Product> createProduct(@Valid @RequestBody ProductInDTO productInDTO,
+                                        @PathVariable("id") Long id);
 
   @Operation(
       summary = "Update stock",
@@ -115,7 +155,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @PutMapping(value = "/{id}/stock")
+  @PutMapping(value = "/products/{id}/stock")
   ResponseEntity<Void> updateStockProduct
   (@PathVariable Long id, @RequestParam(name = "quantity")
   @DecimalMin(value = "0.0", message = "Stock should be greater than 0") Double quantity);
@@ -146,6 +186,6 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @DeleteMapping(value = "/{id}")
+  @DeleteMapping(value = "/products/{id}")
   ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id);
 }
