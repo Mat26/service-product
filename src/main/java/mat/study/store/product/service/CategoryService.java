@@ -11,7 +11,5 @@ public interface CategoryService {
   
   Category createCategory(CategoryInDTO categoryInDTO);
 
-  Category getCategoryByName(String name);
-
   List<Product> getProductsByCategory(Long id);
 }
