@@ -94,11 +94,11 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
     ErrorDetail body = ErrorDetail.builder()
         .code(InfoError.CONSTRAIN_VIOLATION.getCode())
         .message(InfoError.CONSTRAIN_VIOLATION.getMessage())
-        .status(HttpStatus.UNPROCESSABLE_ENTITY)
+        .status(HttpStatus.BAD_REQUEST)
         .time(LocalDateTime.now())
         .detail(buildValidationErrors(ex.getConstraintViolations()))
         .build();
-    return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
+    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
   }
 
   private static String buildValidationErrors(
