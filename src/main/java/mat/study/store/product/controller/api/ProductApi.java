@@ -6,12 +6,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.model.response.Error;
 import mat.study.store.product.model.response.ErrorDetail;
+import mat.study.store.product.validator.GeneralValidatorInfo;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -120,7 +120,7 @@ public interface ProductApi {
   }
   )
   @PostMapping("/{id}/products")
-  ResponseEntity<Product> createProduct(@Valid @RequestBody ProductInDTO productInDTO,
+  ResponseEntity<Product> createProduct(@Validated(GeneralValidatorInfo.class) @RequestBody ProductInDTO productInDTO,
                                         @PathVariable("id") Long id);
 
   @Operation(
@@ -149,7 +149,7 @@ public interface ProductApi {
                   mediaType = MediaType.APPLICATION_JSON_VALUE)}
           ),
           @ApiResponse(responseCode = "500",
-              content = {@Content(schema = @Schema(),examples = {})})
+              content = {@Content(schema = @Schema(), examples = {})})
       },
       security = {
           @SecurityRequirement(name = "bearerAuth")
@@ -157,8 +157,8 @@ public interface ProductApi {
   )
   @PutMapping(value = "/products/{id}/stock")
   ResponseEntity<Void> updateStockProduct
-  (@PathVariable Long id, @RequestParam(name = "quantity")
-  @DecimalMin(value = "0.0", message = "Stock should be greater than 0") Double quantity);
+      (@PathVariable Long id, @RequestParam(name = "quantity")
+      @DecimalMin(value = "0.0", message = "Stock should be greater than 0") Double quantity);
 
   @Operation(
       summary = "Delete product",
