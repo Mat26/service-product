@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import mat.study.store.product.exeption.NonUniqueUserException;
 import mat.study.store.product.model.entity.User;
 import mat.study.store.product.model.enums.Role;
-import mat.study.store.product.model.request.RegisterRequest;
 import mat.study.store.product.model.request.AuthenticationRequest;
+import mat.study.store.product.model.request.RegisterRequest;
 import mat.study.store.product.model.response.JwtAuthenticationResponse;
 import mat.study.store.product.repository.UserRepository;
 import mat.study.store.product.service.AuthenticationService;
@@ -24,7 +24,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
   @Override
-  public JwtAuthenticationResponse signup(RegisterRequest request) throws Exception {
+  public JwtAuthenticationResponse signup(RegisterRequest request) {
     var user = User.builder()
         .firstName(request.firstName())
         .lastName(request.lastName())
@@ -35,8 +35,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     try {
       userRepository.save(user);
     } catch (Exception e) {
-      throw new NonUniqueUserException();//TODO DEVOLVER UN 400
-          }
+      throw new NonUniqueUserException();
+    }
 
     var jwt = jwtService.generateToken(user);
     return JwtAuthenticationResponse.builder()

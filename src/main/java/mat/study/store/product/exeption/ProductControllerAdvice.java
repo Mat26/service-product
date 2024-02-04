@@ -108,4 +108,15 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
         .collect(Collectors.joining("; "));
   }
 
+  @ExceptionHandler(NonUniqueUserException.class)
+  public ResponseEntity<Error> handleNonUniqueUserException(NonUniqueUserException ex) {
+    Error body = Error.builder()
+        .code(InfoError.UNIQUE_USER.getCode())
+        .message(InfoError.UNIQUE_USER.getMessage())
+        .status(HttpStatus.BAD_REQUEST)
+        .time(LocalDateTime.now())
+        .build();
+    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+  }
+
 }
