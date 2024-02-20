@@ -3,6 +3,7 @@ package mat.study.store.product.controller;
 import mat.study.store.product.controller.api.ProductApi;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.ProductInDTO;
+import mat.study.store.product.model.request.QuantityProductInDTO;
 import mat.study.store.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,16 +34,22 @@ public class ProductController implements ProductApi {
   }
 
   @Override
-  public ResponseEntity<Product> createProduct(ProductInDTO productInDTO,
-                                               Long id) {
+  public ResponseEntity<Product> createProduct(ProductInDTO productInDTO) {
     return ResponseEntity.status(HttpStatus.CREATED)
-        .body(productService.createProduct(id, productInDTO));
+        .body(productService.createProduct(productInDTO));
   }
 
   @Override
   public ResponseEntity<Void> updateStockProduct
-      (Long id, Double quantity) {
+      (Long id, QuantityProductInDTO quantity) {
     productService.updateStock(id, quantity);
+    return ResponseEntity.noContent().build();
+  }
+
+  @Override
+  public ResponseEntity<Void> updateProduct(Long idProduct,
+                                            ProductInDTO productInDTO) {
+    productService.updateProduct(idProduct, productInDTO);
     return ResponseEntity.noContent().build();
   }
 

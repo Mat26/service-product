@@ -11,15 +11,10 @@ import jakarta.validation.Valid;
 import mat.study.store.product.model.entity.Category;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
-import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.model.response.Error;
-import mat.study.store.product.model.response.ErrorDetail;
-import mat.study.store.product.validator.UpdateValidatorInfo;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -113,35 +108,5 @@ public interface CategoryApi {
   @PostMapping
   ResponseEntity<Category> createCategory
       (@Valid @RequestBody CategoryInDTO categoryInDTO);
-
-  @Operation(
-      summary = "Update product",
-      description = "Update product",
-      responses = {
-          @ApiResponse(
-              responseCode = "200",
-              description = "Success Response",
-              content = {@Content(schema = @Schema())}
-          ),
-          @ApiResponse(
-              responseCode = "400",
-              description = "Error body request",
-              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
-          ),
-          @ApiResponse(
-              responseCode = "403",
-              content = {@Content(schema = @Schema())}
-          ),
-          @ApiResponse(responseCode = "500",
-              content = {@Content(schema = @Schema())})
-      }, security = {
-      @SecurityRequirement(name = "bearerAuth")
-  }
-  )
-  @PatchMapping(value = "/{idCategory}/products/{idProduct}")
-  ResponseEntity<Void> updateProduct(@PathVariable("idCategory") Long idCategory,
-                                     @PathVariable("idProduct") Long idProduct,
-                                     @Validated(UpdateValidatorInfo.class) @RequestBody ProductInDTO productInDTO);
 
 }

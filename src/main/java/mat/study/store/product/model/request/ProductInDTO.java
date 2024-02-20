@@ -9,7 +9,7 @@ import mat.study.store.product.validator.UpdateValidatorInfo;
 
 
 public record ProductInDTO(@Schema(example = "Adidas Cloudfoam Ultimate")
-                           @NotBlank(message = "Name may not be empty",groups = GeneralValidatorInfo.class)
+                           @NotBlank(message = "Name may not be empty", groups = GeneralValidatorInfo.class)
                            String name,
                            @Schema(example = "Walk in the air in the black / black CLOUDFOAM ULTIMATE running shoe from ADIDAS")
                            String description,
@@ -17,5 +17,8 @@ public record ProductInDTO(@Schema(example = "Adidas Cloudfoam Ultimate")
                            @DecimalMin(value = "0.0", message = "Price should be greater than 0",
                                groups = {GeneralValidatorInfo.class, UpdateValidatorInfo.class})
                            @NotNull(message = "Price may not be empty",
-                               groups = GeneralValidatorInfo.class) Double price) {
+                               groups = GeneralValidatorInfo.class) Double price,
+                           @NotNull(message = "Id Category may not be empty",
+                               groups = GeneralValidatorInfo.class) Long idCategory
+                           ) {
 }

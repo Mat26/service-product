@@ -6,12 +6,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.Valid;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.ProductInDTO;
+import mat.study.store.product.model.request.QuantityProductInDTO;
 import mat.study.store.product.model.response.Error;
 import mat.study.store.product.model.response.ErrorDetail;
 import mat.study.store.product.validator.GeneralValidatorInfo;
+import mat.study.store.product.validator.UpdateValidatorInfo;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,16 +23,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Tag(name = "Product")
-@RequestMapping(value = "/api/v1/category")
+@RequestMapping(value = "/api/v1")
 @Validated
 public interface ProductApi {
   @Operation(
@@ -119,9 +120,9 @@ public interface ProductApi {
       @SecurityRequirement(name = "bearerAuth")
   }
   )
-  @PostMapping("/{id}/products")
-  ResponseEntity<Product> createProduct(@Validated(GeneralValidatorInfo.class) @RequestBody ProductInDTO productInDTO,
-                                        @PathVariable("id") Long id);
+  @PostMapping("/products")
+  ResponseEntity<Product> createProduct(@Validated(GeneralValidatorInfo.class) @RequestBody
+                                            ProductInDTO productInDTO);
 
   @Operation(
       summary = "Update stock",
@@ -155,10 +156,44 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @PutMapping(value = "/products/{id}/stock")
+  @PatchMapping(value = "/products/{id}/stock")
   ResponseEntity<Void> updateStockProduct
-      (@PathVariable Long id, @RequestParam(name = "quantity")
-      @DecimalMin(value = "0.0", message = "Stock should be greater than 0") Double quantity);
+      (@PathVariable Long id, @Valid @RequestBody QuantityProductInDTO quantity);
+
+  @Operation(
+      summary = "Update product",
+      description = "Update product",
+      responses = {
+          @ApiResponse(
+              responseCode = "200",
+              description = "Success Response",
+              content = {@Content(schema = @Schema())}
+          ),
+          @ApiResponse(
+              responseCode = "400",
+              description = "Error body request",
+              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(
+              responseCode = "403",
+              content = {@Content(schema = @Schema())}
+          ),
+          @ApiResponse(
+              responseCode = "404",
+              description = "Invalid id supplied",
+              content = {@Content(schema = @Schema(implementation = Error.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(responseCode = "500",
+              content = {@Content(schema = @Schema())})
+      }, security = {
+      @SecurityRequirement(name = "bearerAuth")
+  }
+  )
+  @PatchMapping(value = "/products/{id}")
+  ResponseEntity<Void> updateProduct(@PathVariable("id") Long idProduct,
+                                     @Validated(UpdateValidatorInfo.class) @RequestBody ProductInDTO productInDTO);
 
   @Operation(
       summary = "Delete product",
