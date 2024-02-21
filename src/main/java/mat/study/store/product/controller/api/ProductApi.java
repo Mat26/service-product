@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Tag(name = "Product")
@@ -56,7 +57,7 @@ public interface ProductApi {
       }
   )
   @GetMapping("/products")
-  Page<Product> getProducts(@ParameterObject @PageableDefault(size = 20) Pageable pageable);
+  Page<Product> getProducts(@ParameterObject @PageableDefault(size = 10) Pageable pageable);
 
   @Operation(
       summary = "Get product",
@@ -87,6 +88,56 @@ public interface ProductApi {
   )
   @GetMapping(value = "/products/{id}")
   Product getProduct(@PathVariable("id") Long id);
+
+  @Operation(
+      summary = "Search by name products",
+      description = "Return all products by name",
+      responses = {
+          @ApiResponse(
+              responseCode = "200",
+              description = "Success Response",
+              content = {@Content(schema = @Schema(implementation = Page.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(
+              responseCode = "403",
+              content = {@Content(schema = @Schema())}
+          ),
+          @ApiResponse(responseCode = "500",
+              content = {@Content(schema = @Schema())})
+      },
+      security = {
+          @SecurityRequirement(name = "bearerAuth")
+      }
+  )
+  @GetMapping(value = "/products/search-name")
+  Page<Product> searchByName(@RequestParam String name,
+                             @ParameterObject @PageableDefault(size = 10) Pageable pageable);
+
+  @Operation(
+      summary = "Search by price products",
+      description = "Return all products by price",
+      responses = {
+          @ApiResponse(
+              responseCode = "200",
+              description = "Success Response",
+              content = {@Content(schema = @Schema(implementation = Page.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(
+              responseCode = "403",
+              content = {@Content(schema = @Schema())}
+          ),
+          @ApiResponse(responseCode = "500",
+              content = {@Content(schema = @Schema())})
+      },
+      security = {
+          @SecurityRequirement(name = "bearerAuth")
+      }
+  )
+  @GetMapping(value = "/products/search-price")
+  Page<Product> searchByPriceBetween(@RequestParam Double minPrice, @RequestParam Double maxPrice,
+                             @ParameterObject @PageableDefault(size = 10) Pageable pageable);
 
   @Operation(
       summary = "Create Product",

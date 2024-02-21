@@ -34,6 +34,17 @@ public class ProductController implements ProductApi {
   }
 
   @Override
+  public Page<Product> searchByName(String name, Pageable pageable) {
+    return productService.findByName(name, pageable);
+  }
+
+  @Override
+  public Page<Product> searchByPriceBetween(Double minPrice, Double maxPrice,
+                                     Pageable pageable) {
+    return productService.findByPriceBetween(minPrice, maxPrice, pageable);
+  }
+
+  @Override
   public ResponseEntity<Product> createProduct(ProductInDTO productInDTO) {
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(productService.createProduct(productInDTO));

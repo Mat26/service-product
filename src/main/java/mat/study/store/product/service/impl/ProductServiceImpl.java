@@ -48,6 +48,16 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
+  public Page<Product> findByName(String name, Pageable pageable) {
+    return productRepository.findByNameContaining(name, pageable);
+  }
+
+  @Override
+  public Page<Product> findByPriceBetween(Double minPrice, Double maxPrice, Pageable pageable) {
+    return productRepository.findByPriceBetween(minPrice, maxPrice, pageable);
+  }
+
+  @Override
   public Product createProduct(ProductInDTO productInDTO) {
     Category category = categoryService.getCategory(productInDTO.idCategory());
     Product product = (Product) mapper.map(productInDTO);

@@ -12,6 +12,10 @@ public interface ProductService {
 
   Product getProduct(Long id);
 
+  Page<Product> findByName(String name, Pageable pageable);
+
+  Page<Product> findByPriceBetween(Double minPrice, Double maxPrice, Pageable pageable);
+
   Product createProduct(ProductInDTO productInDTO);
 
   Product updateProduct(Long idProduct, ProductInDTO productInDTO);
