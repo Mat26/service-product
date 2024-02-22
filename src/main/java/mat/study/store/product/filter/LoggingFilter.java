@@ -25,8 +25,7 @@ import java.util.regex.Pattern;
 
 @Slf4j
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
-@Component
-@WebFilter(filterName = "RequestCachingFilter", urlPatterns = "/*")
+@WebFilter(filterName = "RequestCachingFilter", urlPatterns = "/api/v1/*")
 public class LoggingFilter extends OncePerRequestFilter {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(LoggingFilter.class);
