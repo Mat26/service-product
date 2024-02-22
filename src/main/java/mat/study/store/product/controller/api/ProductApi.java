@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Tag(name = "Product")
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/v1/products")
 @Validated
 public interface ProductApi {
   @Operation(
@@ -56,7 +56,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @GetMapping("/products")
+  @GetMapping()
   Page<Product> getProducts(@ParameterObject @PageableDefault(size = 10) Pageable pageable);
 
   @Operation(
@@ -86,7 +86,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @GetMapping(value = "/products/{id}")
+  @GetMapping(value = "/{id}")
   Product getProduct(@PathVariable("id") Long id);
 
   @Operation(
@@ -110,7 +110,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @GetMapping(value = "/products/search-name")
+  @GetMapping(value = "/search-name")
   Page<Product> searchByName(@RequestParam String name,
                              @ParameterObject @PageableDefault(size = 10) Pageable pageable);
 
@@ -135,7 +135,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @GetMapping(value = "/products/search-price")
+  @GetMapping(value = "/search-price")
   Page<Product> searchByPriceBetween(@RequestParam Double minPrice, @RequestParam Double maxPrice,
                              @ParameterObject @PageableDefault(size = 10) Pageable pageable);
 
@@ -171,7 +171,7 @@ public interface ProductApi {
       @SecurityRequirement(name = "bearerAuth")
   }
   )
-  @PostMapping("/products")
+  @PostMapping("")
   ResponseEntity<Product> createProduct(@Validated(GeneralValidatorInfo.class) @RequestBody
                                             ProductInDTO productInDTO);
 
@@ -207,7 +207,7 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @PatchMapping(value = "/products/{id}/stock")
+  @PatchMapping(value = "/{id}/stock")
   ResponseEntity<Void> updateStockProduct
       (@PathVariable Long id, @Valid @RequestBody QuantityProductInDTO quantity);
 
@@ -242,7 +242,7 @@ public interface ProductApi {
       @SecurityRequirement(name = "bearerAuth")
   }
   )
-  @PatchMapping(value = "/products/{id}")
+  @PatchMapping(value = "/{id}")
   ResponseEntity<Void> updateProduct(@PathVariable("id") Long idProduct,
                                      @Validated(UpdateValidatorInfo.class) @RequestBody ProductInDTO productInDTO);
 
@@ -272,6 +272,6 @@ public interface ProductApi {
           @SecurityRequirement(name = "bearerAuth")
       }
   )
-  @DeleteMapping(value = "/products/{id}")
+  @DeleteMapping(value = "/{id}")
   ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id);
 }
