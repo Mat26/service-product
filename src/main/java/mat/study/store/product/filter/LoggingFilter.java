@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -47,8 +46,8 @@ public class LoggingFilter extends OncePerRequestFilter {
     String responseBody = getStringValue(responseWrapper.getContentAsByteArray(),
         response.getCharacterEncoding());
 
-    logRequest(request,requestBody);
-    logResponse(response,responseBody,timeTaken);
+    logRequest(request, requestBody);
+    logResponse(response, responseBody, timeTaken);
     responseWrapper.copyBodyToResponse();
   }
 
@@ -61,7 +60,7 @@ public class LoggingFilter extends OncePerRequestFilter {
     return "";
   }
 
-  private void logRequest(HttpServletRequest request,String requestBody) {
+  private void logRequest(HttpServletRequest request, String requestBody) {
     LOGGER.info(
         "REQUEST: METHOD={}; URI={}; PAYLOAD={}",
         request.getMethod(), request.getRequestURI(), maskSensitiveInfo(requestBody));
@@ -69,7 +68,7 @@ public class LoggingFilter extends OncePerRequestFilter {
 
   private void logResponse(HttpServletResponse response, String responseBody, long timeTaken) {
     LOGGER.info(
-        "RESPONSE: CODE={}; RESPONSE={}; TIM TAKEN={}",
+        "RESPONSE: CODE={}; BODY={}; TIM TAKEN={}",
         response.getStatus(), maskSensitiveInfo(responseBody),
         timeTaken);
   }
