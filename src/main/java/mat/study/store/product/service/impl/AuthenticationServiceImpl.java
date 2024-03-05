@@ -12,6 +12,8 @@ import mat.study.store.product.service.AuthenticationService;
 import mat.study.store.product.service.JwtService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -46,10 +48,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
   @Override
   public JwtAuthenticationResponse signin(AuthenticationRequest request) {
-    authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(request.email(), request.password()));
-    var user = userRepository.findByEmail(request.email())
-        .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+    User user;
+    try {
+      user = (User) authenticationManager.authenticate(
+          new UsernamePasswordAuthenticationToken(request.email(), request.password())).getPrincipal();
+    }catch(AuthenticationException ex){
+      throw new IllegalArgumentException();
+    }
     var jwt = jwtService.generateToken(user);
     return JwtAuthenticationResponse.builder().token(jwt).build();
   }

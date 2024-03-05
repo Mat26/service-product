@@ -35,6 +35,7 @@ public class SecurityConfiguration {
         csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(request -> request.requestMatchers(
                 antMatcher("/h2-console/**")
+                , antMatcher("/actuator/**")
                 , antMatcher("/v2/api-docs")
                 , antMatcher("/v3/api-docs")
                 , antMatcher("/v3/api-docs/**")

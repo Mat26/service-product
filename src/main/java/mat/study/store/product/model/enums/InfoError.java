@@ -7,7 +7,8 @@ public enum InfoError {
   MISSING_REQUEST_PARAMETER("PR-03", " parameter is missing"),
   ARGUMENT_NOT_VALID("PR-04", "Error body request"),
   CONSTRAIN_VIOLATION("PR-05", "Violation of parameter restriction"),
-  UNIQUE_USER("PR-06", "This user already exists");
+  UNIQUE_USER("PR-06", "This user already exists"),
+  USER_PASSWORD_ERROR("PR-07", "Invalid email or password");
 
   private String code;
   private String message;

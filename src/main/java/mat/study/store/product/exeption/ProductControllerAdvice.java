@@ -119,4 +119,16 @@ public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
   }
 
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<Error> handleIllegalArgumentException(IllegalArgumentException ex) {
+    Error body = Error.builder()
+        .code(InfoError.USER_PASSWORD_ERROR.getCode())
+        .message(InfoError.USER_PASSWORD_ERROR.getMessage())
+        .status(HttpStatus.BAD_REQUEST)
+        .time(LocalDateTime.now())
+        .build();
+    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+  }
+
+
 }
