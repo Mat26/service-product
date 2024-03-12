@@ -52,7 +52,7 @@ public class SecurityConfiguration {
         .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
         .authenticationProvider(authenticationProvider()).addFilterBefore(
             jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//TODO VALIDAR ERROR POR DEFECTO PARA LOS END POINTS
+
     http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
     return http.getOrBuild();

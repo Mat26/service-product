@@ -4,6 +4,7 @@ import mat.study.store.product.controller.api.CategoryApi;
 import mat.study.store.product.model.entity.Category;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
+import mat.study.store.product.model.response.CategoryLinkOut;
 import mat.study.store.product.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class CategoryController implements CategoryApi {
@@ -27,8 +31,19 @@ public class CategoryController implements CategoryApi {
   }
 
   @Override
-  public List<Product> getProductsByCategory(Long id) {
-    return categoryService.getProductsByCategory(id);
+  public CategoryLinkOut getProductsByCategory(Long id) {
+    Category category = getCategory(id);
+    CategoryLinkOut categoryLinkOut = new CategoryLinkOut(category.getId(), category.getName());
+    addCategoryLinks(categoryLinkOut);
+    return categoryLinkOut;
+  }
+
+  private void addCategoryLinks(CategoryLinkOut categoryLinkOut) {
+    List<Product> products = categoryService.getProductsByCategory(categoryLinkOut.getId());
+    for (Product product : products) {
+      categoryLinkOut.add(linkTo(methodOn(ProductController.class).getProduct(product.getId())).withRel("products"));
+    }
+    categoryLinkOut.add(linkTo(methodOn(CategoryController.class).getCategory(categoryLinkOut.getId())).withSelfRel());
   }
 
   @Override

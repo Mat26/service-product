@@ -6,13 +6,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "categories")
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Category {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

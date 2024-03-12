@@ -37,14 +37,9 @@ public class CategoryServiceImpl implements CategoryService {
     return categoryRepository.save(category);
   }
 
-  public Category getCategoryByName(String name) {
-    return categoryRepository.findCategoryByName(name)
-        .orElseThrow(() -> new NoFoundCategoryException(name));
-  }
-
   @Override
   public List<Product> getProductsByCategory(Long categoryId) {
-    List<Product> products = productRepository.findAllByCategoryId(categoryId);
+    List<Product> products = productRepository.findAllProductsByCategory(categoryId);
     if (products.isEmpty()) {
       throw new NoFoundProductException();
     }

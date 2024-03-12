@@ -11,7 +11,10 @@ import jakarta.validation.Valid;
 import mat.study.store.product.model.entity.Category;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
+import mat.study.store.product.model.response.CategoryLinkOut;
 import mat.study.store.product.model.response.Error;
+import mat.study.store.product.model.response.ErrorDetail;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -63,7 +67,7 @@ public interface CategoryApi {
           @ApiResponse(
               responseCode = "200",
               description = "Success Response",
-              content = {@Content(array = @ArraySchema(schema = @Schema(implementation = Product.class)),
+              content = {@Content(array = @ArraySchema(schema = @Schema(implementation = CategoryLinkOut.class)),
                   mediaType = MediaType.APPLICATION_JSON_VALUE)}
           ),
           @ApiResponse(
@@ -83,7 +87,7 @@ public interface CategoryApi {
   }
   )
   @GetMapping("/{id}/products")
-  List<Product> getProductsByCategory(@PathVariable("id") Long id);
+  CategoryLinkOut getProductsByCategory(@PathVariable("id") Long id);
 
   @Operation(
       summary = "Create Category",
@@ -93,6 +97,12 @@ public interface CategoryApi {
               responseCode = "200",
               description = "Success Response",
               content = {@Content(schema = @Schema(implementation = Category.class),
+                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+          ),
+          @ApiResponse(
+              responseCode = "400",
+              description = "Error body request",
+              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
                   mediaType = MediaType.APPLICATION_JSON_VALUE)}
           ),
           @ApiResponse(

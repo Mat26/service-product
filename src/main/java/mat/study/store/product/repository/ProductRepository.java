@@ -16,7 +16,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
   @Query("SELECT p FROM Product p WHERE p.category.id = :categoryId")
-  List<Product> findAllByCategoryId(@Param("categoryId") Long categoryId);
+  List<Product> findAllProductsByCategory(@Param("categoryId") Long categoryId);
 
   @EntityGraph(value = "Product.category")
   Optional<Product> findById(Long id);
