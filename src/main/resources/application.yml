@@ -24,6 +24,7 @@ spring:
         username: admin
         password: admin
         instance:
+          name: 'Product Admin Tool'
           management-base-url: http://localhost:${server.port}
           metadata:
             user:
