@@ -9,6 +9,7 @@ import mat.study.store.product.model.request.AuthenticationRequest;
 import mat.study.store.product.model.request.RegisterRequest;
 import mat.study.store.product.model.response.JwtAuthenticationResponse;
 import org.springframework.http.MediaType;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,9 +32,10 @@ public interface AuthenticationApi {
               }
           ),
           @ApiResponse(
-              responseCode = "403",
+              responseCode = "400",
               description = "User must be unique",
-              content = {@Content(schema = @Schema())}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           )
       }
 
@@ -55,9 +57,10 @@ public interface AuthenticationApi {
               }
           ),
           @ApiResponse(
-              responseCode = "403",
+              responseCode = "400",
               description = "Invalid email or password",
-              content = {@Content(schema = @Schema())}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           )
       }
 

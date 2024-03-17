@@ -12,6 +12,9 @@ management:
     env:
       enabled: true
 spring:
+  mvc:
+    problemdetails:
+      enabled: true
   application:
     name: product-service
   security:

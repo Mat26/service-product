@@ -10,8 +10,6 @@ import jakarta.validation.Valid;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.ProductInDTO;
 import mat.study.store.product.model.request.QuantityProductInDTO;
-import mat.study.store.product.model.response.Error;
-import mat.study.store.product.model.response.ErrorDetail;
 import mat.study.store.product.validator.GeneralValidatorInfo;
 import mat.study.store.product.validator.UpdateValidatorInfo;
 import org.springdoc.core.annotations.ParameterObject;
@@ -19,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -76,8 +75,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "404",
               description = "Invalid id supplied",
-              content = {@Content(schema = @Schema(implementation = Error.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(responseCode = "500",
               content = {@Content(schema = @Schema())})
@@ -137,7 +136,7 @@ public interface ProductApi {
   )
   @GetMapping(value = "/search-price")
   Page<Product> searchByPriceBetween(@RequestParam Double minPrice, @RequestParam Double maxPrice,
-                             @ParameterObject @PageableDefault(size = 10) Pageable pageable);
+                                     @ParameterObject @PageableDefault(size = 10) Pageable pageable);
 
   @Operation(
       summary = "Create Product",
@@ -152,8 +151,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "400",
               description = "Error body request",
-              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(
               responseCode = "403",
@@ -162,8 +161,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "404",
               description = "Invalid id supplied",
-              content = {@Content(schema = @Schema(implementation = Error.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(responseCode = "500",
               content = {@Content(schema = @Schema())})
@@ -187,8 +186,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "400",
               description = "Invalid stock supplied",
-              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(
               responseCode = "403",
@@ -197,8 +196,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "404",
               description = "Invalid id supplied",
-              content = {@Content(schema = @Schema(implementation = Error.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(responseCode = "500",
               content = {@Content(schema = @Schema(), examples = {})})
@@ -223,8 +222,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "400",
               description = "Error body request",
-              content = {@Content(schema = @Schema(implementation = ErrorDetail.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(
               responseCode = "403",
@@ -233,8 +232,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "404",
               description = "Invalid id supplied",
-              content = {@Content(schema = @Schema(implementation = Error.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(responseCode = "500",
               content = {@Content(schema = @Schema())})
@@ -262,8 +261,8 @@ public interface ProductApi {
           @ApiResponse(
               responseCode = "404",
               description = "Invalid id supplied",
-              content = {@Content(schema = @Schema(implementation = Error.class),
-                  mediaType = MediaType.APPLICATION_JSON_VALUE)}
+              content = {@Content(schema = @Schema(implementation = ProblemDetail.class),
+                  mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)}
           ),
           @ApiResponse(responseCode = "500",
               content = {@Content(schema = @Schema())})

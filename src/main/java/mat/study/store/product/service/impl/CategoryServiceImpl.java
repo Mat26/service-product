@@ -1,7 +1,6 @@
 package mat.study.store.product.service.impl;
 
 import mat.study.store.product.exeption.NoFoundCategoryException;
-import mat.study.store.product.exeption.NoFoundProductException;
 import mat.study.store.product.model.entity.Category;
 import mat.study.store.product.model.entity.Product;
 import mat.study.store.product.model.request.CategoryInDTO;
@@ -39,13 +38,8 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public List<Product> getProductsByCategory(Long categoryId) {
-    List<Product> products = productRepository.findAllProductsByCategory(categoryId);
-    if (products.isEmpty()) {
-      throw new NoFoundProductException();
-    }
-    return products;
+    return productRepository.findAllProductsByCategory(categoryId);
   }
-
 
 
 }
