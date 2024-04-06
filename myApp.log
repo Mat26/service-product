@@ -362,3 +362,44 @@ ERROR in ch.qos.logback.core.pattern.parser.Compiler@505a9d7c - [Blue] is not a 
  Started ServiceProductApplication in 6.2 seconds (process running for 7.529)
  Failed to register application as Application(name=product-service, managementUrl=http://localhost:8080/actuator, healthUrl=http://localhost:8080/actuator/health, serviceUrl=http://EN911585.endava.net:8081/) at spring-boot-admin ([http://localhost:8086/instances]): I/O error on POST request for "http://localhost:8086/instances": Connection refused: no further information. Further attempts are logged on DEBUG level
  Closing JPA EntityManagerFactory for persistence unit 'default'
+ Could not detect default configuration classes for test class [mat.study.store.product.ServiceProductApplicationTests]: ServiceProductApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+ Found @SpringBootConfiguration mat.study.store.product.ServiceProductApplication for test class mat.study.store.product.ServiceProductApplicationTests
+ HV000001: Hibernate Validator 8.0.1.Final
+ Starting ServiceProductApplicationTests using Java 17.0.10 with PID 28144 (started by mtrujillo in C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product)
+ No active profile set, falling back to 1 default profile: "default"
+ Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+ Finished Spring Data repository scanning in 217 ms. Found 3 JPA repository interfaces.
+ HHH000204: Processing PersistenceUnitInfo [name: default]
+ HHH000412: Hibernate ORM core version 6.2.6.Final
+ HHH000406: Using bytecode reflection optimizer
+ HHH000021: Bytecode provider name : bytebuddy
+ No LoadTimeWeaver setup: ignoring JPA class transformer
+ HikariPool-1 - Starting...
+ HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:spring-security user=SA
+ HikariPool-1 - Start completed.
+ HHH000021: Bytecode provider name : bytebuddy
+ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+ Initialized JPA EntityManagerFactory for persistence unit 'default'
+ Hibernate is in classpath; If applicable, HQL parser will be used.
+ Exposing 13 endpoint(s) beneath base path '/actuator'
+ spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@330f3046, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37a2d18c, org.springframework.security.web.context.SecurityContextHolderFilter@7a62e096, org.springframework.security.web.header.HeaderWriterFilter@3d7d72f2, org.springframework.security.web.authentication.logout.LogoutFilter@401b7109, mat.study.store.product.filter.JwtAuthenticationFilter@1cc878e6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@478d1193, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69a8617c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b6e296a, org.springframework.security.web.session.SessionManagementFilter@521d455c, org.springframework.security.web.access.ExceptionTranslationFilter@618c387d, org.springframework.security.web.access.intercept.AuthorizationFilter@779e66e5]
+ H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:spring-security'
+ Started ServiceProductApplicationTests in 14.678 seconds (process running for 16.721)
+ Unexpected error occurred in scheduled task
+java.lang.IllegalStateException: couldn't determine local port. Please set spring.boot.admin.client.instance.service-base-url.
+	at de.codecentric.boot.admin.client.registration.DefaultApplicationFactory.getLocalServerPort(DefaultApplicationFactory.java:205)
+	at de.codecentric.boot.admin.client.registration.DefaultApplicationFactory.getServiceBaseUrl(DefaultApplicationFactory.java:109)
+	at de.codecentric.boot.admin.client.registration.ServletApplicationFactory.getServiceUrl(ServletApplicationFactory.java:62)
+	at de.codecentric.boot.admin.client.registration.DefaultApplicationFactory.createApplication(DefaultApplicationFactory.java:82)
+	at de.codecentric.boot.admin.client.registration.DefaultApplicationRegistrator.register(DefaultApplicationRegistrator.java:56)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+ Closing JPA EntityManagerFactory for persistence unit 'default'
+ HikariPool-1 - Shutdown initiated...
+ HikariPool-1 - Shutdown completed.

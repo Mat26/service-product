@@ -1,39 +1,48 @@
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\exeption\NoFoundProductException.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\response\ErrorDetail.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\enums\ProductStatus.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\mapper\IMapper.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\response\Error.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\exeption\NonUniqueUserException.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\controller\AuthenticationController.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\request\SignUpRequest.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\CategoryService.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\response\JwtAuthenticationResponse.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\impl\JwtServiceImpl.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\JwtService.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\enums\Role.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\entity\User.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\enums\InfoError.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\impl\CategoryServiceImpl.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\ProductService.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\ServiceProductApplication.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\impl\ProductServiceImpl.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\request\CategoryInDTO.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\mapper\ProductInDTOToProduct.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\request\SigninRequest.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\entity\Category.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\repository\UserRepository.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\config\SecurityConfiguration.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\controller\ProductController.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\impl\AuthenticationServiceImpl.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\UserService.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\entity\Product.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\exeption\NoFoundCategoryException.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\exeption\ProductControllerAdvice.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\AuthenticationService.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\config\CacheConfig.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\service\impl\UserServiceImpl.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\model\request\ProductInDTO.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\controller\CategoryController.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\repository\CategoryRepository.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\repository\ProductRepository.java
-C:\Users\hmartinez\JAVA\service-product\src\main\java\mat\study\store\product\config\JwtAuthenticationFilter.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\filter\LoggingFilter.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\config\SecurityConfiguration.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\request\AuthenticationRequest.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\response\CategoryLinkOut.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\repository\CategoryRepository.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\filter\JwtAuthenticationFilter.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\impl\AuthenticationServiceImpl.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\entity\Product.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\CategoryController.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\ProductController.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\impl\UserServiceImpl.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\mapper\ProductInDTOToProduct.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\exeption\NonUniqueUserException.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\mapper\IMapper.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\validator\UpdateValidatorInfo.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\response\JwtAuthenticationResponse.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\request\ProductInDTO.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\AuthenticationController.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\enums\Role.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\impl\ProductServiceImpl.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\repository\UserRepository.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\enums\InfoError.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\api\AuthenticationApi.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\validator\GeneralValidatorInfo.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\request\CategoryInDTO.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\impl\JwtServiceImpl.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\CategoryService.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\JwtService.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\CacheController.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\config\CacheConfig.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\entity\User.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\api\CategoryApi.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\api\ProductApi.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\repository\ProductRepository.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\exeption\NoFoundCategoryException.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\ProductService.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\ServiceProductApplication.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\entity\Category.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\controller\api\CacheApi.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\request\QuantityProductInDTO.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\config\OpenApiConfig.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\UserService.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\AuthenticationService.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\request\RegisterRequest.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\exeption\ControllerExceptionHandler.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\exeption\NoFoundProductException.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\model\enums\ProductStatus.java
+C:\Users\mtrujillo\OneDrive - ENDAVA\Documents\Study\service-product\src\main\java\mat\study\store\product\service\impl\CategoryServiceImpl.java
